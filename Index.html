@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Company Name | Official Website</title>
+  <meta name="description" content="Professional homepage for Your Company Name." />
+
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --primary-light: #3b82f6;
+      --accent: #f97316;
+      --bg: #f9fafb;
+      --text: #111827;
+      --muted: #6b7280;
+      --white: #ffffff;
+      --border: #e5e7eb;
+      --radius: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* Layout */
+    .container {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--primary);
+    }
+
+    .logo-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-size: 0.9rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      position: relative;
+      padding-bottom: 0.2rem;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.55rem 1.1rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease,
+        transform 0.1s ease;
+      background: none;
+      color: var(--muted);
+    }
+
+    .btn-outline {
+      border-color: var(--border);
+      background: var(--white);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--primary-light);
+      color: var(--primary);
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: var(--white);
+      border: none;
+      box-shadow: 0 8px 18px rgba(37, 99, 235, 0.25);
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.03);
+      transform: translateY(-1px);
+    }
+
+    main {
+      padding-bottom: 4rem;
+    }
+
+    /* Hero section */
+    .hero {
+      padding: 3.5rem 0 3rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.2rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid rgba(37, 99, 235, 0.18);
+      background: rgba(239, 246, 255, 0.8);
+      color: var(--primary);
+      font-size: 0.8rem;
+      font-weight: 500;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-tag-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 3.1vw + 1.4rem, 3.4rem);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      letter-spacing: -0.035em;
+      color: #020617;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 36rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem 1.3rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .hero-meta-item span {
+      font-weight: 600;
+      color: var(--text);
+      font-size: 0.9rem;
+    }
+
+    .hero-card {
+      background: radial-gradient(circle at top left, #eff6ff, #0f172a);
+      color: var(--white);
+      border-radius: 18px;
+      padding: 1.75rem 1.5rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.45);
+    }
+
+    .hero-card-badge {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(248, 250, 252, 0.25);
+      backdrop-filter: blur(6px);
+    }
+
+    .hero-card-title {
+      font-size: 1.1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-card-subtitle {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-stat {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+    }
+
+    .hero-stat strong {
+      display: block;
+      font-size: 1.1rem;
+      color: var(--white);
+    }
+
+    .hero-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(148, 163, 184, 0.3);
+      font-size: 0.8rem;
+      color: #cbd5f5;
+    }
+
+    .hero-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+    }
+
+    /* Services section */
+    .section {
+      padding: 2.75rem 0 2.5rem;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 2rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .section-title-group {
+      max-width: 32rem;
+    }
+
+    .section-kicker {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      margin-bottom: 0.4rem;
+      letter-spacing: -0.02em;
+    }
+
+    .section-subtitle {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .section-cta {
+      font-size: 0.85rem;
+      color: var(--primary);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      white-space: nowrap;
+    }
+
+    .section-cta span:last-child {
+      font-size: 1.1rem;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 1.35rem 1.25rem;
+      box-shadow: 0 4px 12px rgba(148, 163, 184, 0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .card-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: rgba(37, 99, 235, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.05rem;
+      color: var(--primary);
+    }
+
+    .card-title {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .card-text {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .card-meta {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: auto;
+    }
+
+    /* About section */
+    .about {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .about-highlight {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .pill {
+      padding: 0.25rem 0.75rem;
+      font-size: 0.8rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.8);
+      color: var(--muted);
+    }
+
+    .about-panel {
+      background: var(--white);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 1.5rem 1.35rem;
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.08);
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .about-panel strong {
+      color: var(--text);
+    }
+
+    .about-list {
+      margin-top: 1rem;
+      display: grid;
+      gap: 0.45rem;
+      list-style: none;
+    }
+
+    .about-list li::before {
+      content: "•";
+      color: var(--primary);
+      display: inline-block;
+      margin-right: 0.4rem;
+    }
+
+    /* Contact / CTA */
+    .cta-section {
+      padding: 2.5rem 0 3rem;
+    }
+
+    .cta {
+      background: linear-gradient(135deg, #0f172a, #1d4ed8);
+      border-radius: 20px;
+      padding: 2.1rem 2rem;
+      color: var(--white);
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 2rem;
+      align-items: center;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.6);
+    }
+
+    .cta h2 {
+      font-size: 1.6rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .cta p {
+      font-size: 0.95rem;
+      color: #e5e7eb;
+      max-width: 30rem;
+    }
+
+    .cta-form {
+      background: rgba(15, 23, 42, 0.7);
+      border-radius: 16px;
+      padding: 1.4rem 1.3rem;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      font-size: 0.85rem;
+    }
+
+    .form-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .form-row label {
+      font-size: 0.8rem;
+      color: #cbd5f5;
+    }
+
+    .form-row input,
+    .form-row textarea {
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      padding: 0.5rem 0.65rem;
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--white);
+      font-size: 0.85rem;
+      outline: none;
+    }
+
+    .form-row input:focus,
+    .form-row textarea:focus {
+      border-color: var(--primary-light);
+      box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.6);
+    }
+
+    .form-row textarea {
+      min-height: 80px;
+      resize: vertical;
+    }
+
+    .cta-note {
+      font-size: 0.75rem;
+      color: #9ca3af;
+      margin-top: 0.6rem;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      background: #020617;
+      color: #9ca3af;
+      padding: 1.4rem 0;
+      font-size: 0.8rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a:hover {
+      color: #e5e7eb;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero {
+        padding-top: 2.5rem;
+      }
+
+      .card-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .about {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .cta {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 680px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 2rem;
+      }
+
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .card-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .cta {
+        padding: 1.75rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header / Navigation -->
+  <header>
+    <div class="container nav">
+      <a href="#" class="logo">
+        <div class="logo-mark">YC</div>
+        <span>Your Company</span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="#contact" class="btn btn-outline">Book a call</a>
+        <a href="#contact" class="btn btn-primary">Get a quote</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="hero-tag">
+            <span class="hero-tag-dot"></span>
+            Trusted partner for modern businesses
+          </div>
+          <h1>
+            We build <span>professional digital experiences</span> that grow
+            your brand.
+          </h1>
+          <p class="hero-subtitle">
+            Your Company Name is a full-service agency helping organizations
+            design, build, and scale high-performing websites and digital
+            products.
+          </p>
+
+          <div class="hero-cta">
+            <a href="#contact" class="btn btn-primary">Schedule a consultation</a>
+            <a href="#services" class="btn btn-outline">View our services</a>
+          </div>
+
+          <div class="hero-meta">
+            <div class="hero-meta-item">
+              <span>50+ projects</span><br />
+              delivered across industries
+            </div>
+            <div class="hero-meta-item">
+              <span>5-star feedback</span><br />
+              from our clients worldwide
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-label="Key metrics">
+          <div class="hero-card-badge">Since 2020</div>
+          <h2 class="hero-card-title">Proven results, measurable impact</h2>
+          <p class="hero-card-subtitle">
+            Data-informed design, clean engineering, and dedicated support for
+            your business.
+          </p>
+
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <strong>+120%</strong>
+              Avg. increase in website engagement
+            </div>
+            <div class="hero-stat">
+              <strong>+60%</strong>
+              Avg. increase in qualified leads
+            </div>
+            <div class="hero-stat">
+              <strong>24/7</strong>
+              Ongoing support availability
+            </div>
+          </div>
+
+          <div class="hero-card-footer">
+            <div style="display: flex; align-items: center; gap: 0.6rem;">
+              <div class="hero-avatar">YC</div>
+              <div>
+                <div style="font-weight: 500;">Dedicated project team</div>
+                <div>Design, development & strategy experts</div>
+              </div>
+            </div>
+            <div>“Professional, responsive, and easy to work with.”</div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-title-group">
+            <div class="section-kicker">Services</div>
+            <h2 class="section-title">What we can help you achieve</h2>
+            <p class="section-subtitle">
+              From strategy to execution, we partner with you at every stage to
+              create digital experiences that perform.
+            </p>
+          </div>
+          <a href="#contact" class="section-cta">
+            <span>Looking for something specific?</span>
+            <span>→</span>
+          </a>
+        </div>
+
+        <div class="card-grid">
+          <article class="card">
+            <div class="card-icon">🌐</div>
+            <h3 class="card-title">Website design & development</h3>
+            <p class="card-text">
+              Custom, responsive websites built to reflect your brand, engage
+              your audience, and convert visitors into customers.
+            </p>
+            <div class="card-meta">Corporate, portfolio, and marketing sites</div>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">📱</div>
+            <h3 class="card-title">Product & app interfaces</h3>
+            <p class="card-text">
+              Intuitive, user-centered interface design for web applications,
+              dashboards, and mobile products.
+            </p>
+            <div class="card-meta">UI/UX, prototypes, and design systems</div>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">📈</div>
+            <h3 class="card-title">Brand & digital strategy</h3>
+            <p class="card-text">
+              Clear positioning and cohesive digital presence that support your
+              long-term business goals and growth.
+            </p>
+            <div class="card-meta">Brand identity and content guidance</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section">
+      <div class="container about">
+        <div class="about-highlight">
+          <div class="section-kicker">About</div>
+          <h2 class="section-title">A small team with a high standard</h2>
+          <p class="section-subtitle">
+            We combine design, engineering, and strategy to deliver work that
+            looks great and moves your metrics.
+          </p>
+
+          <div class="pill-row">
+            <span class="pill">On-time delivery</span>
+            <span class="pill">Clear communication</span>
+            <span class="pill">Long-term partnerships</span>
+          </div>
+        </div>
+
+        <aside class="about-panel">
+          <p>
+            <strong>Your Company Name</strong> was founded with a simple belief:
+            professional doesn’t have to mean complicated. We keep our process
+            transparent, our timelines realistic, and our quality consistently
+            high.
+          </p>
+          <ul class="about-list">
+            <li>Discovery to understand your goals, audience, and constraints</li>
+            <li>Collaborative design and feedback cycles</li>
+            <li>Reliable implementation on modern, maintainable technology</li>
+            <li>Support after launch so you are never on your own</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Contact / CTA -->
+    <section id="contact" class="cta-section">
+      <div class="container">
+        <div class="cta">
+          <div>
+            <h2>Ready to start your next project?</h2>
+            <p>
+              Tell us about your goals, timelines, and what success looks like
+              for you. We’ll respond within one business day.
+            </p>
+          </div>
+
+          <form class="cta-form">
+            <div class="form-row">
+              <label for="name">Name</label>
+              <input id="name" type="text" name="name" placeholder="Your name" />
+            </div>
+
+            <div class="form-row">
+              <label for="email">Email</label>
+              <input
+                id="email"
+                type="email"
+                name="email"
+                placeholder="you@example.com"
+              />
+            </div>
+
+            <div class="form-row">
+              <label for="message">Project details</label>
+              <textarea
+                id="message"
+                name="message"
+                placeholder="Share a brief overview of your project, goals, and timeline."
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%;">
+              Submit inquiry
+            </button>
+            <div class="cta-note">
+              By submitting this form, you agree to be contacted regarding your
+              inquiry.
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-inner">
+      <div>© <span id="year"></span> Your Company Name. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Set current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
